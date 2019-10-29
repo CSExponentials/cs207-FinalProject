@@ -6,7 +6,5 @@ before_install:
     - pip install codecov
 script:
     - pytest --cov=./
-env:
-    - CODECOV_TOKEN="6399b096-6237-477d-9c32-c2d6336ab841"
 after_success:
-    - codecov
+    - bash <(curl -s https://codecov.io/bash) -t 6399b096-6237-477d-9c32-c2d6336ab841
