@@ -2,10 +2,11 @@ language: python
 python:
     - "3.6"
 before_install:
-    - pip install pytest pytest-cov
+    - pip install pytest 
+    - pip install pytest-cov
     - pip install codecov
 script:
-    - pytest --cov=./
+    - pytest
 env:
     - CODECOV_TOKEN="6399b096-6237-477d-9c32-c2d6336ab841"
 after_success:
