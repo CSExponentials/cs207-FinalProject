@@ -7,4 +7,4 @@ before_install:
 script:
     - pytest --cov=./
 after_success:
-    - bash <(curl -s https://codecov.io/bash) -t "6399b096-6237-477d-9c32-c2d6336ab841"
+    - codecov
