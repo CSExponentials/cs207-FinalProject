@@ -4,7 +4,10 @@ python:
 before_install:
     - pip install pytest pytest-cov
     - pip install codecov
+    - pip install -r requirements.txt
 script:
     - pytest --cov=./
+env:
+    - CODECOV_TOKEN=c91ef8c7-be59-4926-bb56-89cde16f2884
 after_success:
     - codecov
