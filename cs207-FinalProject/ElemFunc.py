@@ -1,0 +1,29 @@
+import AutoDiff as AD
+import math as math
+
+
+def sin(x):
+    try:
+        return AD.AutoDiff(math.sin(x.val), math.cos(x.val)*x.der)
+    except AttributeError:
+        return AD.AutoDiff(math.sin(x),0)
+
+
+def cos(x):
+    try: 
+        return AD.AutoDiff(math.cos(x.val), -math.sin(x.val)*x.der)
+    except AttributeError:
+        return AD.AutoDiff(math.cos(x),0)
+ 
+def exp(x):
+    try:
+        return AD.AutoDiff(math.exp(x.val), math.exp(x.val)*x.der)
+    except AttributeError:
+        return AD.AutoDiff(math.exp(x),0)
+
+
+def log(x):
+    try:
+        return AD.AutoDiff(math.log(x.val), (1/(x.val))*x.der)
+    except AttributeError:
+        return AD.AutoDiff(math.log(x),0)
