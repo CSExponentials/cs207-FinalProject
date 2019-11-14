@@ -96,6 +96,32 @@ def test_plus():
 
     assert res==expectAns
 
+def test_plus_1():
+    c=10
+    def myfunc(x,y):
+        f1=1+x
+        return f1
+
+    f_obj=ADiff(myfunc)
+    res=f_obj.Jac(c)
+
+    expectAns={'diff': 1, 'value': 11}
+
+    assert res==expectAns
+
+def test_plus_2():
+    c=10
+    def myfunc(x):
+        f1=x+1
+        return f1
+
+    f_obj=ADiff(myfunc)
+    res=f_obj.Jac(c)
+
+    expectAns={'diff': 1, 'value': 11}
+
+    assert res==expectAns
+
 def test_mult():
     c=[1,2]
     def myfunc(x,y):
@@ -106,6 +132,32 @@ def test_mult():
     res=f_obj.Jac(c)
 
     expectAns={'diff': [4,2], 'value': 4}
+
+    assert res==expectAns
+
+def test_mult_1():
+    c=10
+    def myfunc(x,y):
+        f1=2*x
+        return f1
+
+    f_obj=ADiff(myfunc)
+    res=f_obj.Jac(c)
+
+    expectAns={'diff': 2, 'value': 20}
+
+    assert res==expectAns
+
+def test_mult_2():
+    c=10
+    def myfunc(x,y):
+        f1=x*2
+        return f1
+
+    f_obj=ADiff(myfunc)
+    res=f_obj.Jac(c)
+
+    expectAns={'diff': 2, 'value': 20}
 
     assert res==expectAns
 
@@ -122,6 +174,32 @@ def test_div():
 
     assert res==expectAns
 
+def test_div_1():
+    c=10
+    def myfunc(x):
+        f1=1/x
+        return f1
+
+    f_obj=AD.ADiff(myfunc)
+    res=f_obj.Jac(c)
+
+    expectAns={'diff': -0.01, 'value': 0.1}
+
+    assert res==expectAns
+
+def test_div_2():
+    c=10
+    def myfunc(x):
+        f1=x/2
+        return f1
+
+    f_obj=AD.ADiff(myfunc)
+    res=f_obj.Jac(c)
+
+    expectAns={'diff': 0.5, 'value': 5}
+
+    assert res==expectAns
+
 def test_power():
     c=[1,2]
     def myfunc(x,y):
@@ -134,6 +212,34 @@ def test_power():
     expectAns={'diff': [math.log(3)*3**(c[0]**c[1])*c[1]*c[0]**(c[1]-1),math.log(3)*3**(c[0]**c[1])*math.log(c[0])*c[0]**c[1]], 'value': 3**1**2}
 
     assert res==expectAns
+
+def test_power_1():
+    c=10
+    def myfunc(x):
+        f1=3**x
+        return f1
+
+    f_obj=ADiff(myfunc)
+    res=f_obj.Jac(c)
+
+    expectAns={'diff': [math.log(3)*(3**c)], 'value': 3**c}
+
+    assert res==expectAns
+
+
+def test_power_2():
+    c=10
+    def myfunc(x):
+        f1=x**3
+        return f1
+
+    f_obj=ADiff(myfunc)
+    res=f_obj.Jac(c)
+
+    expectAns={'diff': [3*(x**2)], 'value': c**3}
+
+    assert res==expectAns
+
 
 def test_neg_sub():
 
@@ -148,6 +254,36 @@ def test_neg_sub():
     expectAns={'diff': [1,1], 'value': 4}
 
     assert res==expectAns
+
+
+def test_neg_sub_1():
+
+    c=10
+    def myfunc(x):
+        f1=1-x
+        return -f1
+
+    f_obj=ADiff(myfunc)
+    res=f_obj.Jac(c)
+
+    expectAns={'diff': -1, 'value': 9}
+
+    assert res==expectAns
+
+
+def test_neg_sub_2():
+    c = 10
+
+    def myfunc(x):
+        f1 = x - 1
+        return -f1
+
+    f_obj = ADiff(myfunc)
+    res = f_obj.Jac(c)
+
+    expectAns = {'diff': 1, 'value': -9}
+
+    assert res == expectAns
 
 
 def test_vec_func1():
