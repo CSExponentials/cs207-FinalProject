@@ -166,6 +166,3 @@ def test_vec_func1():
  'value': [2.8414709848078967, 3.909297426825681]}
 
     assert res==expectAns
-
-
-test_log()
