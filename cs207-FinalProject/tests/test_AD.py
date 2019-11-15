@@ -1,8 +1,9 @@
+import os
 import sys
-sys.path.append('../')
+sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
 
-from AD import ElemFunc as EF
-from AD.ADiff import ADiff
+import ElemFunc as EF
+from ADiff import ADiff
 
 import pytest
 import math as math
@@ -115,7 +116,7 @@ def test_div():
         f1=1/x/y/2
         return f1
 
-    f_obj=AD.ADiff(myfunc)
+    f_obj=ADiff(myfunc)
     res=f_obj.Jac(c)
 
     expectAns={'diff': [-0.25,-1/8], 'value': 0.25}
