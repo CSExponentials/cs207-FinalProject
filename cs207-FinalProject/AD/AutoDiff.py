@@ -6,6 +6,12 @@ class AutoDiff():
         self.val=a # Store value
         self.der=der # Store derivative
 
+    def __repr__(self):
+        return "Value: {}, Derivative: {}".format(self.val,self.der)
+
+    def __str__(self):
+        return "AutoDiff Instance with value {} and derivative {}".format(self.val,self.der)
+
     def __mul__(self, other):
 
         # We will use ducktype to handle the possibility of other being a
