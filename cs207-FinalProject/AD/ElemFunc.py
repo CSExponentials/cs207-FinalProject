@@ -147,29 +147,30 @@ def tan(x):
     except AttributeError:
         return AutoDiff(math.tan(x),0)
 
-# def cot(x):
-#     """Returns the value and derivative of cotangent of x as an AutoDiff instance.
-#
-#     INPUTS
-#     =======
-#     x: Numeric value or AutoDiff instance
-#
-#     RETURNS
-#     ========
-#     AutoDiff instance where the value is cotangent of x and the derivative is the derivative of cotangent of x.
-#
-#     EXAMPLES
-#     =========
-#     >>> cot(π/2)
-#     ??
-#     >>> a = AutoDiff(π/2,1)
-#     >>> cot(a)
-#     ??
-#     """
-#     try:
-#         return AutoDiff(math.cot(x.val), (2/(math.cos(x.val*2)-1))*x.der)
-#     except AttributeError:
-#         return AutoDiff(math.cot(x),0)
+ def cot(x):
+     """Returns the value and derivative of cotangent of x as an AutoDiff instance.
+
+     INPUTS
+     =======
+     x: Numeric value or AutoDiff instance
+
+     RETURNS
+     ========
+     AutoDiff instance where the value is cotangent of x and the derivative is the derivative of cotangent of x.
+
+     EXAMPLES
+     =========
+     >>> cot(π/2)
+     Value: 6.123233995736766e-17, Derivative: 0
+     >>> a = AutoDiff(π/2,1)
+     >>> cot(a)
+     Value: 6.123233995736766e-17, Derivative: -1.0)
+     """
+     try:
+         return AutoDiff(math.cos(x.val)/math.sin(x.val), (2/(math.cos(x.val*2)-1))*x.der)
+     except AttributeError:
+         return AutoDiff(math.cos(x)/math.sin(x),0)
+        
 
 def sec(x):
     """Returns the value and derivative of secant of x as an AutoDiff instance.
@@ -195,29 +196,29 @@ def sec(x):
     except AttributeError:
         return AutoDiff(1/math.cos(x),0)
 
-# def csc(x):
-#     """Returns the value and derivative of cosecant of x as an AutoDiff instance.
-#
-#     INPUTS
-#     =======
-#     x: Numeric value or AutoDiff instance
-#
-#     RETURNS
-#     ========
-#     AutoDiff instance where the value is cosecant of x and the derivative is the derivative of cosecant of x.
-#
-#     EXAMPLES
-#     =========
-#     >>> csc(π/2)
-#     Value: 1, Derivative: 0
-#     >>> a = AutoDiff(π/2,1)
-#     >>> csc(a)
-#     Value: 1.0, Derivative: 6.123233995736766e-17
-#     """
-#     try:
-#         return AutoDiff(1/math.sin(x.val), (-1/math.sin(x.val)*math.cot(x.val))*x.der)
-#     except AttributeError:
-#         return AutoDiff(1/math.sin(x),0)
+def csc(x):
+     """Returns the value and derivative of cosecant of x as an AutoDiff instance.
+
+     INPUTS
+     =======
+     x: Numeric value or AutoDiff instance
+
+     RETURNS
+     ========
+     AutoDiff instance where the value is cosecant of x and the derivative is the derivative of cosecant of x.
+
+     EXAMPLES
+     =========
+     >>> csc(π/2)
+     Value: 1, Derivative: 0
+     >>> a = AutoDiff(π/2,1)
+     >>> csc(a)
+     Value: 1.0, Derivative: 6.123233995736766e-17
+     """
+     try:
+         return AutoDiff(1/math.sin(x.val), (-1/math.sin(x.val)*math.cos(x.val)/math.sin(x.val))*x.der)
+     except AttributeError:
+         return AutoDiff(1/math.sin(x),0)
 
 def arcsin(x):
     """Returns the value and derivative of the inverse of sine of x as an AutoDiff instance.
