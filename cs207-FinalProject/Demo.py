@@ -6,7 +6,7 @@ import ElemFunc as EF
 from ADiff import ADiff
 import pprint as pp
 
-def myfunc(x,y):
+def myfunc1(x,y):
     f1=x*y
     f2=EF.sin(x)
     f3=10
@@ -31,43 +31,100 @@ def myfunc5(x,y):
         f1=3**x**y
         return f1
 
-print("Direction derivative of f at direction p, evaluated at x0")
-p=[2,3]
+
+print("======= myfunc1 =======")
+print("Output Jacobian J at c:")
 c=[1,2]
-f_obj=ADiff(myfunc)
+f_obj=ADiff(myfunc1)
 res=f_obj.Jac(c)
 pp.pprint(res)
+print("")
 
-print("Direction derivative of f at direction p, evaluated at x0")
+print("Output J*p directly without needing full J:")
+c=[1,2]
+p=[2,3]
+f_obj=ADiff(myfunc1)
+res=f_obj.pJac(c,p)
+pp.pprint(res)
+print("======= END ==========")
+print("\n")
+
+
+
+print("======= myfunc2 =======")
+print("Output Jacobian at c:")
 p=[2,3]
 c=[1,2,3]
 f_obj=ADiff(myfunc2)
 res=f_obj.Jac(c)
-
 pp.pprint(res)
+print("")
 
-print("Direction derivative of f at direction p, evaluated at x0")
-p=[2,3]
+print("Output J*p directly without needing full J:")
+p=[2,3,4]
+c=[1,2,3]
+f_obj=ADiff(myfunc2)
+res=f_obj.pJac(c,p)
+pp.pprint(res)
+print("======= END ==========")
+print("\n")
+
+
+
+print("======= myfunc3 =======")
+print("Output Jacobian at c:")
 c=3
 f_obj=ADiff(myfunc3)
 res=f_obj.Jac(c)
-
 pp.pprint(res)
+print("")
 
-print("Direction derivative of f at direction p, evaluated at x0")
-p=[2,3]
+print("Output J*p directly without needing full J:")
+p=3
+c=3
+f_obj=ADiff(myfunc3)
+res=f_obj.pJac(c,p)
+pp.pprint(res)
+print("======= END ==========")
+print("\n")
+
+
+
+print("======= myfunc4 =======")
+print("Output Jacobian at c:")
 c=2
 f_obj=ADiff(myfunc4)
 res=f_obj.Jac(c)
-
 pp.pprint(res)
+print("")
+
+
+print("Output J*p directly without needing full J:")
+p=3
+c=2
+f_obj=ADiff(myfunc4)
+res=f_obj.pJac(c,p)
+pp.pprint(res)
+print("======= END ==========")
+print("\n")
 
 
 
-print("Direction derivative of f at direction p, evaluated at x0")
-p=[2,3]
+print("======= myfunc5 =======")
+print("Output Jacobian at c:")
 c=[1,2]
 f_obj=ADiff(myfunc5)
 res=f_obj.Jac(c)
 
 pp.pprint(res)
+print("")
+
+print("Output J*p directly without needing full J:")
+p=[2,3]
+c=[1,2]
+f_obj=ADiff(myfunc5)
+res=f_obj.pJac(c,p)
+
+pp.pprint(res)
+print("======= END ==========")
+print("\n")

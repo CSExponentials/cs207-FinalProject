@@ -4,10 +4,19 @@ class ADiff():
     def __init__(self, func):
         self.func=func
 
-    # Output Jp where the value is a scalar if f is scalar and list if f is
-    # vector function; Jp is either scalar for scalar f and list if f is vector
-    # function
+
     def pJac(self,c,p):
+        """Returns J*p where J is Jacobian evaluated at c
+
+        INPUTS
+        =======
+        c: the point at which Jacobian J is to be evaluated
+        p: the direction J is applied to, the final output is Jp
+
+        RETURNS
+        ========
+        Product J*p
+        """
 
         try:
             clen=len(c)
@@ -74,8 +83,18 @@ class ADiff():
 
         return {"value": valList, "diff": derList}
 
-    # Output entire Jacobian
     def Jac(self,c):
+        """Returns J where J is Jacobian evaluated at c
+
+        INPUTS
+        =======
+        c: the point at which Jacobian J is to be evaluated
+
+
+        RETURNS
+        ========
+        Product J
+        """
 
         try:
             clen=len(c)

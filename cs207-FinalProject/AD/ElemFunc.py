@@ -45,10 +45,10 @@ def cos(x):
         >>> cos(a)
         Value: 6.123233995736766e-17, Derivative: -1.0
         """
-    try:
-        return AutoDiff(math.cos(x.val), -math.sin(x.val)*x.der)
-    except AttributeError:
-        return AutoDiff(math.cos(x),0)
+        try:
+            return AutoDiff(math.cos(x.val), -math.sin(x.val)*x.der)
+        except AttributeError:
+            return AutoDiff(math.cos(x),0)
 
 def exp(x):
         """Returns the value and derivative of e^x as an AutoDiff instance.
@@ -69,10 +69,10 @@ def exp(x):
         >>> exp(a)
         Value: 4.810477380965351, Derivative: 4.810477380965351
         """
-    try:
-        return AutoDiff(math.exp(x.val), math.exp(x.val)*x.der)
-    except AttributeError:
-        return AutoDiff(math.exp(x),0)
+        try:
+            return AutoDiff(math.exp(x.val), math.exp(x.val)*x.der)
+        except AttributeError:
+            return AutoDiff(math.exp(x),0)
 
 
 def log(x):
@@ -94,10 +94,10 @@ def log(x):
         >>> sin(a)
         Value: 0.4515827052894548, Derivative: 0.6366197723675814
         """
-    try:
-        return AutoDiff(math.log(x.val), (1/(x.val))*x.der)
-    except AttributeError:
-        return AutoDiff(math.log(x),0)
+        try:
+            return AutoDiff(math.log(x.val), (1/(x.val))*x.der)
+        except AttributeError:
+            return AutoDiff(math.log(x),0)
 
 def log10(x):
         """Returns the value and derivative of log base 10 of x as an AutoDiff instance.
@@ -118,10 +118,10 @@ def log10(x):
         >>> sin(a)
         Value: 0.19611987703015263, Derivative: 0.6366197723675814
         """
-    try:
-        return AutoDiff(math.log10(x.val), (1/(x.val))*x.der)
-    except AttributeError:
-        return AutoDiff(math.log10(x),0)
+        try:
+            return AutoDiff(math.log10(x.val), (1/(x.val))*x.der)
+        except AttributeError:
+            return AutoDiff(math.log10(x),0)
 
 def tan(x):
         """Returns the value and derivative of tangent of x as an AutoDiff instance.
@@ -142,10 +142,10 @@ def tan(x):
         >>> sin(a)
         Value: -1.2246467991473532e-16, Derivative: 1.0
         """
-    try:
-        return AutoDiff(math.tan(x.val), (2/(math.cos(x.val*2)+1))*x.der)
-    except AttributeError:
-        return AutoDiff(math.tan(x),0)
+        try:
+            return AutoDiff(math.tan(x.val), (2/(math.cos(x.val*2)+1))*x.der)
+        except AttributeError:
+            return AutoDiff(math.tan(x),0)
 
 # def cot(x):
 #         """Returns the value and derivative of cotangent of x as an AutoDiff instance.
@@ -190,10 +190,10 @@ def sec(x):
         >>> sec(a)
         Value: 1.633123935319537e+16, Derivative: 2.667093788113571e+32
         """
-    try:
-        return AutoDiff(1/(math.cos(x.val)), (math.tan(x.val)*1/(math.cos(x.val))*x.der))
-    except AttributeError:
-        return AutoDiff(1/math.cos(x),0)
+        try:
+            return AutoDiff(1/(math.cos(x.val)), (math.tan(x.val)*1/(math.cos(x.val))*x.der))
+        except AttributeError:
+            return AutoDiff(1/math.cos(x),0)
 
 # def csc(x):
 #         """Returns the value and derivative of cosecant of x as an AutoDiff instance.
@@ -238,10 +238,10 @@ def arcsin(x):
         >>> arcsin(a)
         Value: 0.0, Derivative: 1.0
         """
-    try:
-        return AutoDiff(math.asin(x.val), (1/math.sqrt(1-(x.val)*(x.val)))*x.der)
-    except AttributeError:
-        return AutoDiff(math.asin(x),0)
+        try:
+            return AutoDiff(math.asin(x.val), (1/math.sqrt(1-(x.val)*(x.val)))*x.der)
+        except AttributeError:
+            return AutoDiff(math.asin(x),0)
 
 def arccos(x):
         """Returns the value and derivative of the inverse of cosine of x as an AutoDiff instance.
@@ -262,10 +262,10 @@ def arccos(x):
         >>> arccos(a)
         Value: 1.5707963267948966, Derivative: -1.0
         """
-    try:
-        return AutoDiff(math.acos(x.val), (-1/math.sqrt(1-(x.val)*(x.val)))*x.der)
-    except AttributeError:
-        return AutoDiff(math.acos(x),0)
+        try:
+            return AutoDiff(math.acos(x.val), (-1/math.sqrt(1-(x.val)*(x.val)))*x.der)
+        except AttributeError:
+            return AutoDiff(math.acos(x),0)
 
 def arctan(x):
         """Returns the value and derivative of the inverse of tangent of x as an AutoDiff instance.
@@ -286,7 +286,7 @@ def arctan(x):
         >>> arctan(a)
         Value: 0.0, Derivative: -1.0
         """
-    try:
-        return AutoDiff(math.atan(x.val), (-1/(1+(x.val)*(x.val))*x.der))
-    except AttributeError:
-        return AutoDiff(math.atan(x),0)
+        try:
+            return AutoDiff(math.atan(x.val), (-1/(1+(x.val)*(x.val))*x.der))
+        except AttributeError:
+            return AutoDiff(math.atan(x),0)
