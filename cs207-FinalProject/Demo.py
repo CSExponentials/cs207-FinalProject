@@ -1,5 +1,9 @@
-from AD import ElemFunc as EF
-from AD.ADiff import ADiff
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__),'./AD'))
+
+import ElemFunc as EF
+from ADiff import ADiff
 import pprint as pp
 
 def myfunc(x,y):
