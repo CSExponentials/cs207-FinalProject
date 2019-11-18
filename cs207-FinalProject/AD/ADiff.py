@@ -8,6 +8,17 @@ class ADiff():
     # vector function; Jp is either scalar for scalar f and list if f is vector
     # function
     def pJac(self,c,p):
+        """ Returns J*p where J is Jacobian at c
+        
+        INPUTS
+        =======
+        p: direction to which J is applied to: J*p
+        c: point at which J is evaluated at
+
+        RETURNS
+        ========
+        J*p
+        """
 
         try:
             clen=len(c)
@@ -76,6 +87,16 @@ class ADiff():
 
     # Output entire Jacobian
     def Jac(self,c):
+        """ Returns J where J is Jacobian at c
+        
+        INPUTS
+        =======
+        c: point at which J is evaluated at
+
+        RETURNS
+        ========
+        J
+        """
 
         try:
             clen=len(c)
