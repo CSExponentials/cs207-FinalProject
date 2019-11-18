@@ -147,7 +147,7 @@ def tan(x):
     except AttributeError:
         return AutoDiff(math.tan(x),0)
 
- def cot(x):
+def cot(x):
      """Returns the value and derivative of cotangent of x as an AutoDiff instance.
 
      INPUTS
@@ -170,7 +170,7 @@ def tan(x):
          return AutoDiff(math.cos(x.val)/math.sin(x.val), (2/(math.cos(x.val*2)-1))*x.der)
      except AttributeError:
          return AutoDiff(math.cos(x)/math.sin(x),0)
-        
+
 
 def sec(x):
     """Returns the value and derivative of secant of x as an AutoDiff instance.
