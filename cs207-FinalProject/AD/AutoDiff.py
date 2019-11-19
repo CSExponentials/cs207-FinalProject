@@ -13,10 +13,15 @@ class AutoDiff():
         return "AutoDiff Instance with value {} and derivative {}".format(self.val,self.der)
 
     def __mul__(self, other):
+        '''
+        INPUTS
+        =======
+        other: Numeric value or AutoDiff instance
 
-        # We will use ducktype to handle the possibility of other being a
-        # real number or is an object of AutoDiffToy class
-
+        RETURNS
+        ========
+        AutoDiff instance where the value is the result of multiplying and the derivative is the derivative of multiplying.
+        '''
         ret=AutoDiff(0,0) # This is what we will return eventually
         try:
             ret.val=self.val*other.val
@@ -29,8 +34,15 @@ class AutoDiff():
         return ret
 
     def __add__(self, other):
-        # We will use ducktype to handle the possibility of other being a
-        # real number or is an object of AutoDiffToy class
+        '''
+        INPUTS
+        =======
+        other: Numeric value or AutoDiff instance
+
+        RETURNS
+        ========
+        AutoDiff instance where the value is the result of adding and the derivative is the derivative of adding.
+        '''
 
         ret=AutoDiff(0,0) # This is what we will return eventually
 
@@ -43,8 +55,15 @@ class AutoDiff():
         return ret
 
     def __sub__(self, other):
-        # We will use ducktype to handle the possibility of other being a
-        # real number or is an object of AutoDiffToy class
+        '''
+        INPUTS
+        =======
+        other: Numeric value or AutoDiff instance
+
+        RETURNS
+        ========
+        AutoDiff instance where the value is the result of substracting and the derivative is the derivative of substracting.
+        '''
 
         ret=AutoDiff(0,0) # This is what we will return eventually
 
@@ -57,21 +76,34 @@ class AutoDiff():
         return ret
 
     def __rsub__(self, other):
-        # we know that __sub__ has failed and other must be a number of form
-        # other-self
+        '''
+        INPUTS
+        =======
+        other: Numeric value
+
+        RETURNS
+        ========
+        AutoDiff instance where the value is the result of substracting and the derivative is the derivative of substracting.
+        '''
 
         ret=AutoDiff(other-self.val,-self.der) # This is what we will return
         return ret
 
     def __neg__(self):
-
         ret=AutoDiff(-self.val,-self.der) # This is what we will return
         return ret
 
 
     def __truediv__(self, other):
-        # We will use ducktype to handle the possibility of other being a
-        # real number or is an object of AutoDiffToy class
+        '''
+        INPUTS
+        =======
+        other: Numeric value or AutoDiff instance
+
+        RETURNS
+        ========
+        AutoDiff instance where the value is the result of dividing and the derivative is the derivative of dividing.
+        '''
 
         ret=AutoDiff(0,0) # This is what we will return eventually
 
@@ -84,15 +116,30 @@ class AutoDiff():
         return ret
 
     def __rtruediv__(self, other):
-        # Now since __truediv__ failed to excute, we know we are to evaluate
-        # other/self where other is a real number
+        '''
+        INPUTS
+        =======
+        other: Numeric value
 
-        # This is what we will return eventually
+        RETURNS
+        ========
+        AutoDiff instance where the value is the result of dividing and the derivative is the derivative of dividing.
+        '''
+
         ret=AutoDiff(other/self.val,-other*self.der/(self.val**2))
 
         return ret
 
     def __pow__(self, other):
+        '''
+        INPUTS
+        =======
+        other: Numeric value or AutoDiff instance
+
+        RETURNS
+        ========
+        AutoDiff instance where the value is the result of powering and the derivative is the derivative of powering.
+        '''
 
         ret=AutoDiff(0,0) # This is what we will return eventually
 
@@ -107,11 +154,15 @@ class AutoDiff():
         return ret
 
     def __rpow__(self,other):
+        '''
+        INPUTS
+        =======
+        other: Numeric value
 
-        # Now since __truediv__ failed to excute, we know we are to evaluate
-        # other^self where other is a real number
-
-        # This is what we will return eventually
+        RETURNS
+        ========
+        AutoDiff instance where the value is the result of powering and the derivative is the derivative of powering.
+        '''
         ret=AutoDiff(other**self.val, math.log(other)*other**(self.val)*self.der)
 
         return ret
