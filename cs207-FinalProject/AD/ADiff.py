@@ -29,11 +29,9 @@ class ADiff():
             plen=1
 
 
-        varNum=self.func.__code__.co_argcount
-        if clen!=varNum:
-            raise Exception("c size does not match input function")
-        if plen!=varNum:
-            raise Exception("p size does not match input function")
+        varNum=clen
+        if clen!=plen:
+            raise Exception("c's size does not match p's size")
 
         # Preallocate array for variable objects
         varList=[None]*varNum
@@ -104,9 +102,8 @@ class ADiff():
             # c is scalar
             clen=1
 
-        varNum=self.func.__code__.co_argcount
-        if clen!=varNum:
-            raise Exception("c size does not match input function")
+        varNum=clen
+        
 
         # Preallocate to store entire Jacobian matrix
         JacList=[None]*varNum
