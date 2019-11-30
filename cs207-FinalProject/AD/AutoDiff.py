@@ -167,6 +167,39 @@ class AutoDiff():
 
         return ret
 
+    def __eq__(self,other):
+        '''
+        INPUTS
+        =======
+        other: AutoDiff instance
+
+        RETURNS
+        ========
+        True if AutoDiff instance is equal to self by comparing the value and derivative. Oterwise False.
+        If input is not an Autodiff instance, raises and exception.
+        '''
+        try:
+            return other.val == self.val and other.der == self.der
+        except AttributeError:
+            raise "{} is not an Autodiff".format(other)
+
+
+    def __neq__(self,other):
+        '''
+        INPUTS
+        =======
+        other: AutoDiff instance
+
+        RETURNS
+        ========
+        True if AutoDiff instance is equal to self by comparing the value and derivative. Oterwise False.
+        If input is not an Autodiff instance, raises and exception.
+        '''
+        try:
+            return not (other.val == self.val and other.der == self.der)
+        except AttributeError:
+            raise "{} is not an Autodiff".format(other)
+
 
 
     __rmul__=__mul__

@@ -307,3 +307,27 @@ def test_vec_func1():
  'value': [2.8414709848078967, 3.909297426825681]}
 
     assert res==expectAns
+
+
+def test_eq():
+    """Boolean condition asserts that value and derivative of an AutoDiff instance are equal to that of a different Autodiff instance.
+
+    RETURNS
+    ========
+    If the boolean condition returns True nothing is returned. If it is computed to be false, then an AssertionError is raised.
+    """
+
+    def myfunc1(x,y):
+        f1=1*x*y*2
+        return f1
+
+    def myfunc2(x,y):
+        f1=1*x*y*4
+        return f1
+
+    f_obj1=ADiff(myfunc1)
+    res1 = f_obj1 == f_obj1
+    f_obj2=ADiff(myfunc2)
+    res2 = f_obj1 == f_obj2
+
+    assert res1==True and res2==False
