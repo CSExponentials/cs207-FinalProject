@@ -101,7 +101,7 @@ class MALASampler():
             Xst=Xst[0]
             
             # If target at the proposal is already 0, we will simply reject the proposal
-            if target(*Xst).val==0:
+            if self.target(*Xst).val==0:
                 continue
             
             # log pi gradient at Xst
@@ -112,7 +112,7 @@ class MALASampler():
             qXstXtm1=np.exp((-1/(4*tau)*(np.linalg.norm(Xst-Xtm1-tau*dellogpiXtm1,2))**2))
             
             # The acceptance ratio
-            alpha=min(1, (target(*Xst).val*qXtm1Xst)/(target(*Xtm1).val*qXstXtm1))
+            alpha=min(1, (self.target(*Xst).val*qXtm1Xst)/(self.target(*Xtm1).val*qXstXtm1))
             
             # Toss a coin
             coin_=np.random.uniform(0,1)
@@ -182,14 +182,16 @@ class MALASampler():
 
 # Demo
 
-def target(x,y):
-    return EF.exp(-(1-x)**2-10*(y-x**2)**2)
-
-def diagfun(samples):
-    return np.mean(samples,1)
-
-sampler=MALASampler(target, tau=0.02)
-samples=sampler.sample(steps_=100000, X0=np.zeros(2), liveoutput=2000, diagfun=diagfun)
-plt.scatter(samples[:,0], samples[:,1])
-print(sampler.getAcceptRatio())
-print(sampler.getAvgMovesize())
+# =============================================================================
+# def target(x,y):
+#     return EF.exp(-(1-x)**2-10*(y-x**2)**2)
+# 
+# def diagfun(samples):
+#     return np.mean(samples,1)
+# 
+# sampler=MALASampler(target, tau=0.02)
+# samples=sampler.sample(steps_=100000, X0=np.zeros(2), liveoutput=2000, diagfun=diagfun)
+# plt.scatter(samples[:,0], samples[:,1])
+# print(sampler.getAcceptRatio())
+# print(sampler.getAvgMovesize())
+# =============================================================================

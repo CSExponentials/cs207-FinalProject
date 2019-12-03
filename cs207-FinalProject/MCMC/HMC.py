@@ -222,11 +222,13 @@ class HMCSampler():
         
 # Demo
 
-def target(x,y):
-    return EF.exp(-(1-x)**2-10*(y-x**2)**2)
-
-sampler=HMCSampler(target, ep=0.05, L=100)
-samples=sampler.sample(steps_=2000,  X0=np.zeros(2), liveoutput=200)
-plt.scatter(samples[:,0], samples[:,1])
-print(sampler.getAcceptRatio())
-print(sampler.getAvgMovesize())
+# =============================================================================
+# def target(x,y):
+#     return EF.exp(-(1-x)**2-10*(y-x**2)**2)
+# 
+# sampler=HMCSampler(target, ep=0.05, L=100)
+# samples=sampler.sample(steps_=2000,  X0=np.zeros(2), liveoutput=200)
+# plt.scatter(samples[:,0], samples[:,1])
+# print(sampler.getAcceptRatio())
+# print(sampler.getAvgMovesize())
+# =============================================================================
