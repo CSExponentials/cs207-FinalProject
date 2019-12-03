@@ -74,6 +74,127 @@ def exp(x):
     except AttributeError:
         return AutoDiff(math.exp(x),0)
 
+def exp_base(y,x):
+    """Returns the value and derivative of the hyperbolic cosine of x as an AutoDiff instance.
+
+    INPUTS
+    =======
+    y: base
+    x: exponent: Numeric value or AutoDiff instance
+
+    RETURNS
+    ========
+    AutoDiff instance where the value is the hyperbolic cosine of x and the derivative is the derivative of the hyperbolic cosine of x.
+
+    EXAMPLES
+    =========
+    >>> power(2,2)
+    Value: 4.0, Derivative: 0
+    >>> a = AutoDiff(2,1)
+    >>> power(2,a)
+    Value 4.0, Derivative 4.0
+    """
+    try:
+        return AutoDiff(math.pow(x.val, y), math.pow(x.val, y)*x.der)
+    except AttributeError:
+        return AutoDiff(math.pow(x,y),0)
+    
+def logistic(x):
+    """Returns the value and derivative of the logistic sigmoid of x as an AutoDiff instance.
+
+    INPUTS
+    =======
+    x: Numeric value or AutoDiff instance
+
+    RETURNS
+    ========
+    AutoDiff instance where the value is the logistic sigmoid of x and the derivative is the derivative of the logistic sigmoid of x.
+
+    EXAMPLES
+    =========
+    >>> logistic(2)
+    Value: 0.8807970779778823, Derivative: 0
+    >>> a = AutoDiff(2,1)
+    >>> logistic(a)
+    Value: 0.8807970779778823, Derivative 0.10499358540350662
+    """
+    try:
+        return AutoDiff((1 / (1 + math.exp(-x.val))), (1 / (1 + math.exp(-x.val)))*(1-(1 / (1 + math.exp(-x.val))))*x.der)
+    except AttributeError:
+        return AutoDiff(1 / (1 + math.exp(-x)),0)
+    
+def cosh(x):
+    """Returns the value and derivative of the hyperbolic cosine of x as an AutoDiff instance.
+
+    INPUTS
+    =======
+    x: Numeric value or AutoDiff instance
+
+    RETURNS
+    ========
+    AutoDiff instance where the value is the hyperbolic cosine of x and the derivative is the derivative of the hyperbolic cosine of x.
+
+    EXAMPLES
+    =========
+    >>> cosh(2)
+    Value: 3.7621956910836314, Derivative: 0
+    >>> a = AutoDiff(2,1)
+    >>> cosh(a)
+    Value 3.7621956910836314, Derivative: 3.6268604078470186
+    """
+    try:
+        return AutoDiff(((math.exp(x.val)+math.exp(-x.val))/2), ((math.exp(x.val)-math.exp(-x.val))/2)*x.der)
+    except AttributeError:
+        return AutoDiff(((math.exp(x)+math.exp(-x))/2),0)
+    
+def sinh(x):
+    """Returns the value and derivative of the hyperbolic sine of x as an AutoDiff instance.
+
+    INPUTS
+    =======
+    x: Numeric value or AutoDiff instance
+
+    RETURNS
+    ========
+    AutoDiff instance where the value is the hyperbolic sine of x and the derivative is the derivative of the hyperbolic sine of x.
+
+    EXAMPLES
+    =========
+    >>> sinh(2)
+    Value: 3.6268604078470186, Derivative 0
+    >>> a = AutoDiff(2,1)
+    >>> sinh(a)
+    Value: 3.6268604078470186, Derivative: 3.7621956910836314
+    
+    """
+    try:
+        return AutoDiff(((math.exp(x.val)-math.exp(-x.val))/2), ((math.exp(x.val)+math.exp(-x.val))/2)*x.der)
+    except AttributeError:
+        return AutoDiff(((math.exp(x)-math.exp(-x))/2),0)    
+ 
+def tanh(x):
+    """Returns the value and derivative of the hyperbolic tangent of x as an AutoDiff instance.
+
+    INPUTS
+    =======
+    x: Numeric value or AutoDiff instance
+
+    RETURNS
+    ========
+    AutoDiff instance where the value is the hyperbolic tangent of x and the derivative is the derivative of the hyperbolic tangent of x.
+
+    EXAMPLES
+    =========
+    >>> tanh(2)
+    Value: 0.9640275800758169, Derivative: 0
+    >>> a = AutoDiff(2,1)
+    >>> tanh(a)
+    Value 0.9640275800758169, Derivative: 1
+    """
+    try: 
+        return AutoDiff(((math.exp(x.val)-math.exp(-x.val))/2)/((math.exp(x.val)+math.exp(-x.val))/2), ((1/((math.exp(x.val)+math.exp(-x.val))/2)*((math.exp(x.val)+math.exp(-x.val))/2))*x.der))
+    except AttributeError:
+        return AutoDiff(((math.exp(x)-math.exp(-x))/2)/((math.exp(x)+math.exp(-x))/2),0) 
 
 def log(x):
     """Returns the value and derivative of log base e of x as an AutoDiff instance.
