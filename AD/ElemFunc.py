@@ -88,10 +88,10 @@ def exp_base(y,x):
 
     EXAMPLES
     =========
-    >>> power(2,2)
+    >>> exp_base(2,2)
     Value: 4.0, Derivative: 0
     >>> a = AutoDiff(2,1)
-    >>> power(2,a)
+    >>> exp_base(2,a)
     Value 4.0, Derivative 4.0
     """
     try:
@@ -196,12 +196,13 @@ def tanh(x):
     except AttributeError:
         return AutoDiff(((math.exp(x)-math.exp(-x))/2)/((math.exp(x)+math.exp(-x))/2),0) 
 
-def log(x):
+def log(x, b = math.e):
     """Returns the value and derivative of log base e of x as an AutoDiff instance.
 
     INPUTS
     =======
     x: Numeric value or AutoDiff instance
+    b: Base. Without this argument the natural logarithm (base e) will be returned
 
     RETURNS
     ========
@@ -209,40 +210,16 @@ def log(x):
 
     EXAMPLES
     =========
-    >>> sin(π/2)
-    Value: 0.4515827052894548, Derivative: 0
-    >>> a = AutoDiff(π/2,1)
-    >>> sin(a)
-    Value: 0.4515827052894548, Derivative: 0.6366197723675814
+    >>> log(5,2)
+    Value: 2.321928094887362, Derivative: 0
+    >>> a = AutoDiff(5,1)
+    >>> log(a,2)
+    Value: 2.321928094887362, Diff: 0.2
     """
     try:
-        return AutoDiff(math.log(x.val), (1/(x.val))*x.der)
+        return AutoDiff(math.log(x.val,b), (1/(x.val))*x.der)
     except AttributeError:
-        return AutoDiff(math.log(x),0)
-
-def log10(x):
-    """Returns the value and derivative of log base 10 of x as an AutoDiff instance.
-
-    INPUTS
-    =======
-    x: Numeric value or AutoDiff instance
-
-    RETURNS
-    ========
-    AutoDiff instance where the value is log base 10 of x and the derivative is the derivative of log base 10 of x.
-
-    EXAMPLES
-    =========
-    >>> sin(π/2)
-    Value: 0.19611987703015263, Derivative: 0
-    >>> a = AutoDiff(π/2,1)
-    >>> sin(a)
-    Value: 0.19611987703015263, Derivative: 0.6366197723675814
-    """
-    try:
-        return AutoDiff(math.log10(x.val), (1/(x.val))*x.der)
-    except AttributeError:
-        return AutoDiff(math.log10(x),0)
+        return AutoDiff(math.log(x,b),0)
 
 def tan(x):
     """Returns the value and derivative of tangent of x as an AutoDiff instance.
@@ -257,11 +234,11 @@ def tan(x):
 
     EXAMPLES
     =========
-    >>> sin(π/2)
-    Value: 1.633123935319537e+16, Derivative: 0
-    >>> a = AutoDiff(π,1)
-    >>> sin(a)
-    Value: -1.2246467991473532e-16, Derivative: 1.0
+    >>> tan(2)
+    Value: -2.185039863261519, Derivative: 0 
+    >>> a = AutoDiff(2,1)
+    >>> tan(a)
+    Value: -2.185039863261519, Derivative: 5.774399204041918
     """
     try:
         return AutoDiff(math.tan(x.val), (2/(math.cos(x.val*2)+1))*x.der)
