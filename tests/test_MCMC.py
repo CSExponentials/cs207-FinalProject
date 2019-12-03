@@ -4,8 +4,9 @@ sys.path.append(os.path.join(os.path.dirname(__file__),'../'))
 
 import AD.ElemFunc as EF
 from AD.ADiff import ADiff
-from MCMC.HMC import HMCSampler
-from MCMC.MALA import MALASampler
+sys.path.append(os.path.join(os.path.dirname(__file__),'../MCMC/'))
+from HMC import HMCSampler
+from MALA import MALASampler
 
 import pytest
 import math as math
@@ -29,7 +30,7 @@ def test_HMC():
     assert np.mean(samples, 0)==pytest.approx([0,0], abs=0.5)
     assert sampler.getAcceptRatio()>=0
     assert sampler.getAvgMovesize()>=0
-    
+
 # We will test MALA sampler with a 2D gaussian distribution centered at 0--we will
 # check if the sample mean is close enough to 0
 def test_MALA():
@@ -40,7 +41,7 @@ def test_MALA():
     """
     def target(x,y):
         return EF.exp(-x**2-y**2)
-    
+
     def diagfun(samples):
         return np.mean(samples,1)
 
@@ -51,4 +52,3 @@ def test_MALA():
     assert np.mean(samples, 0)==pytest.approx([0,0], abs=0.5)
     assert sampler.getAcceptRatio()>=0
     assert sampler.getAvgMovesize()>=0
-    
