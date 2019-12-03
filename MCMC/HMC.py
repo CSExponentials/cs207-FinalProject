@@ -125,8 +125,6 @@ class HMCSampler(Sampler):
 
             self.printDiagnostics(i, liveoutput, diagfun, XsmpHa, summovesize, acceptsteps)
 
-        self.accptRatio=acceptsteps/steps_
-        self.accptmoveSize=summovesize/acceptsteps
-        self.varaccptmoveSize=np.var(XsmpHa)
+        self.setParams(XsmpHa, acceptsteps, steps_, summovesize)
 
         return XsmpHa[burnin:None,:]

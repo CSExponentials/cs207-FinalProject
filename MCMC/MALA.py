@@ -101,7 +101,6 @@ class MALASampler(Sampler):
         if (acceptsteps==0):
             raise Exception('No proposal was accepted! Consider Re-tuning parameters')
 
-        self.accptRatio=acceptsteps/steps_
-        self.accptmoveSize=summovesize/acceptsteps
-        self.varaccptmoveSize=np.var(XsmpHa)
+        self.setParams(XsmpHa, acceptsteps, steps_, summovesize)
+
         return XsmpHa

@@ -5,6 +5,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
 import ElemFunc as EF
 import ADiff as AD
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 class Sampler():
@@ -83,6 +84,14 @@ class Sampler():
         """
 
         return self.varaccptmoveSize
+
+    def setParams(self, XsmpHa, acceptsteps, steps_, summovesize):
+        """
+        Sets the class parameters afetr sampling
+        """
+        self.accptRatio=acceptsteps/steps_
+        self.accptmoveSize=summovesize/acceptsteps
+        self.varaccptmoveSize=np.var(XsmpHa)
 
     def printDiagnostics(self, i, liveoutput, diagfun, XsmpHa, summovesize, acceptsteps):
         """
