@@ -75,7 +75,7 @@ def exp(x):
         return AutoDiff(math.exp(x),0)
 
 def exp_base(y,x):
-    """Returns the value and derivative of the hyperbolic cosine of x as an AutoDiff instance.
+    """Returns the value and derivative of the exponential with x as exponent and y as base as an AutoDiff instance.
 
     INPUTS
     =======
@@ -84,7 +84,7 @@ def exp_base(y,x):
 
     RETURNS
     ========
-    AutoDiff instance where the value is the hyperbolic cosine of x and the derivative is the derivative of the hyperbolic cosine of x.
+    AutoDiff instance where the value is the exponential with x as exponent and y as base and the derivative is its derivative.
 
     EXAMPLES
     =========
@@ -95,9 +95,9 @@ def exp_base(y,x):
     Value 4.0, Derivative 4.0
     """
     try:
-        return AutoDiff(math.pow(x.val, y), math.pow(x.val, y)*x.der)
+        return AutoDiff(math.pow(y,x.val), math.pow(y,x.val)*x.der)
     except AttributeError:
-        return AutoDiff(math.pow(x,y),0)
+        return AutoDiff(math.pow(y,x),0)
     
 def logistic(x):
     """Returns the value and derivative of the logistic sigmoid of x as an AutoDiff instance.
@@ -217,7 +217,7 @@ def log(x, b = math.e):
     Value: 2.321928094887362, Diff: 0.2
     """
     try:
-        return AutoDiff(math.log(x.val,b), (1/(x.val))*x.der)
+        return AutoDiff(math.log(x.val,b), (1/((x.val)*math.log(b)))*x.der)
     except AttributeError:
         return AutoDiff(math.log(x,b),0)
 
@@ -386,6 +386,6 @@ def arctan(x):
     Value: 0.0, Derivative: -1.0
     """
     try:
-        return AutoDiff(math.atan(x.val), (-1/(1+(x.val)*(x.val))*x.der))
+        return AutoDiff(math.atan(x.val), (1/(1+(x.val)*(x.val))*x.der))
     except AttributeError:
         return AutoDiff(math.atan(x),0)
