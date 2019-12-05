@@ -420,8 +420,8 @@ def test_trig2_vector():
     
     f_obj=ADiff(myfunc)
     res=f_obj.pJac(c,p)
-    expectAns={'diff':0.7432015404535479, 'value': math.sin(c[0])+ math.acos(c[1]) + math.tan(c[2])} #diff values differ at last digits when calculate with math.cos(c[0])- 1/(math.sqrt(1-c[1]**2))+ 1/(math.cos(c[2])*math.cos(c[2]))
-    assert res==expectAns
+    calc_diff = round(res['diff'],10)
+    assert {'diff':round(0.7432015404535481,10), 'value': math.sin(c[0])+ math.acos(c[1]) + math.tan(c[2])} == {'diff':round(res['diff'],10),'value':res['value']}#diff values differ at last digits when calculate with math.cos(c[0])- 1/(math.sqrt(1-c[1]**2))+ 1/(math.cos(c[2])*math.cos(c[2]))
     
 
 def test_vec_func1():
@@ -491,4 +491,3 @@ def test_eq():
     res2 = f_obj1 == f_obj2
 
     assert res1==True and res2==False
-    
