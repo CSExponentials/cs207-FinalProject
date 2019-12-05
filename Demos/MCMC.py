@@ -1,10 +1,11 @@
-from HMC import HMCSampler
-from MALA import MALASampler
-
 import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
 import ElemFunc as EF
+
+sys.path.append(os.path.join(os.path.dirname(__file__),'../MCMC'))
+from HMC import HMCSampler
+from MALA import MALASampler
 
 import numpy as np
 

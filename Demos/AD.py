@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__),'./AD'))
+sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
 
 import ElemFunc as EF
 from ADiff import ADiff

@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
+sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
 
 import ElemFunc as EF
 from ADiff import ADiff
@@ -105,7 +105,7 @@ def test_tanh():
     res=f_obj.Jac(c)
     expectAns={'diff': (1/((math.exp(c)+math.exp(-c))/2)*((math.exp(c)+math.exp(-c))/2)), 'value': ((math.exp(c)-math.exp(-c))/2)/((math.exp(c)+math.exp(-c))/2)}
     assert res==expectAns
-    
+
 def test_sinh():
     """Boolean condition asserts that value and derivative of the cosecant of the AutoDiff instance are equal to the expected value and derivative as calculated in the function.
 
@@ -114,14 +114,14 @@ def test_sinh():
     If the boolean condition returns True nothing is returned. If it is computed to be false, then an AssertionError is raised.
     """
     c=2
-        
+
     def myfunc(x):
         f1=EF.sinh(x)
         return f1
 
     f_obj=ADiff(myfunc)
     res=f_obj.Jac(c)
-    
+
     expectAns={'diff':math.cosh(c), 'value':3.626860407847019} #sinh(x) differ in last digits
     assert res==expectAns
 
@@ -133,7 +133,7 @@ def test_cosh():
     If the boolean condition returns True nothing is returned. If it is computed to be false, then an AssertionError is raised.
     """
     c=2
-       
+
     def myfunc(x):
         f1=EF.cosh(x)
         return f1
@@ -143,7 +143,7 @@ def test_cosh():
 
     expectAns={'diff':3.626860407847019,'value':math.cosh(c)}#sinh(x) differ in last digits
     assert res==expectAns
-    
+
 
 def test_exp_con():
     """Boolean condition asserts that value and derivative of e^x of the AutoDiff instance are equal to the expected value and derivative as calculated in the function for the case in which x is a real number.
@@ -193,7 +193,7 @@ def test_cot():
     If the boolean condition returns True nothing is returned. If it is computed to be false, then an AssertionError is raised.
     """
     c=0.5
-       
+
     def myfunc(x):
         f1=EF.cot(x)
         return f1
@@ -221,7 +221,7 @@ def test_arcsin():
     If the boolean condition returns True nothing is returned. If it is computed to be false, then an AssertionError is raised.
     """
     c=0.5
-       
+
     def myfunc(x):
         f1=EF.arcsin(x)
         return f1
@@ -230,7 +230,7 @@ def test_arcsin():
     res=f_obj.Jac(c)
     expectAns={'diff':1/math.sqrt(1-c**2), 'value':math.asin(c)}
     assert res==expectAns
-    
+
 def test_arccos():
     """Boolean condition asserts that value and derivative of the inverse of cosine of the AutoDiff instance are equal to the expected value and derivative as calculated in the function.
 
@@ -247,7 +247,7 @@ def test_arccos():
     res=f_obj.Jac(c)
     expectAns={'diff':-1/math.sqrt(1-c**2), 'value':math.acos(c)}
     assert res==expectAns
-    
+
 def test_sec():
     """Boolean condition asserts that value and derivative of the secant of the AutoDiff instance are equal to the expected value and derivative as calculated in the function.
 
@@ -261,7 +261,7 @@ def test_sec():
         return f1
     f_obj=ADiff(myfunc)
     res=f_obj.Jac(c)
-    
+
     expectAns={'diff':math.tan(c)*(1/math.cos(c)), 'value': 1/math.cos(c)}
     assert res==expectAns
 
@@ -285,7 +285,7 @@ def test_tanh_con():
     c=14
     assert {'diff':EF.tanh(c).der, 'value': EF.tanh(c).val}=={'diff':0, 'value': ((math.exp(c)-math.exp(-c))/2)/((math.exp(c)+math.exp(-c))/2)}
 
-    
+
 def test_plus():
     """Boolean condition asserts that value and derivative of an addition using the AutoDiff class are equal to the expected value and derivative as calculated in the function.
 
@@ -382,9 +382,9 @@ def test_neg_sub():
     assert res==expectAns
 
 
-    
+
 def test_trig_pJac():
-    """Boolean condition asserts that value and derivative of a function of the Autodiff class comprising several elementary operations are equal to the expected value and derivative as calculated in the function. 
+    """Boolean condition asserts that value and derivative of a function of the Autodiff class comprising several elementary operations are equal to the expected value and derivative as calculated in the function.
 
     RETURNS
     ========
@@ -397,14 +397,14 @@ def test_trig_pJac():
         b = (EF.arcsin(x))
         c = (EF.arctan(x))
         return a - b + c
-    
+
     f_obj=ADiff(myfunc)
     res=f_obj.pJac(c,p)
     expectAns={'diff': -math.sin(c[0])-(1/math.sqrt(1-c[0]**2))+(1/(1+c[0]**2)), 'value': math.cos(c[0])-math.asin(c[0])+math.atan(c[0])}
     assert res==expectAns
-    
+
 def test_trig2_vector():
-    """Boolean condition asserts that value and derivative of a function of the Autodiff class comprising several elementary operations are equal to the expected value and derivative as calculated in the function. 
+    """Boolean condition asserts that value and derivative of a function of the Autodiff class comprising several elementary operations are equal to the expected value and derivative as calculated in the function.
 
     RETURNS
     ========
@@ -417,12 +417,12 @@ def test_trig2_vector():
         b = (EF.arccos(y))
         c = (EF.tan(z))
         return a + b + c
-    
+
     f_obj=ADiff(myfunc)
     res=f_obj.pJac(c,p)
     calc_diff = round(res['diff'],10)
     assert {'diff':round(0.7432015404535481,10), 'value': math.sin(c[0])+ math.acos(c[1]) + math.tan(c[2])} == {'diff':round(res['diff'],10),'value':res['value']}#diff values differ at last digits when calculate with math.cos(c[0])- 1/(math.sqrt(1-c[1]**2))+ 1/(math.cos(c[2])*math.cos(c[2]))
-    
+
 
 def test_vec_func1():
     """Boolean condition asserts that value and derivative of a function of the Autodiff class comprising several elementary operations are equal to the expected value and derivative as calculated in the function.
@@ -445,7 +445,7 @@ def test_vec_func1():
  'value': [2.8414709848078967, 3.909297426825681]}
 
     assert res==expectAns
-    
+
 def test_vec_func2():
     """Boolean condition asserts that value and derivative of a function of the Autodiff class comprising several elementary operations are equal to the expected value and derivative as calculated in the function.
 
@@ -453,7 +453,7 @@ def test_vec_func2():
     ========
     If the boolean condition returns True nothing is returned. If it is computed to be false, then an AssertionError is raised.
     """
-    
+
     c = [1,2]
     p = [1,1]
     def myfunc(x,y):
@@ -461,10 +461,10 @@ def test_vec_func2():
         b = EF.logistic(y)
         c = EF.log(y,2) #log with base 2
         return a + b + c
-        
+
     f_obj=ADiff(myfunc)
     res=f_obj.pJac(c,p)
-    
+
     expectAns={'diff': math.pow(2,c[0])+1/(1 + math.exp(-c[1]))*(1-(1/(1 + math.exp(-c[1]))))+1/((c[1])*math.log(2)), 'value': math.pow(2,c[0])+(1 / (1 + math.exp(-c[1])))+math.log(c[1],2)}
 
     assert res==expectAns
