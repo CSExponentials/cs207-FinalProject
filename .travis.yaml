@@ -7,5 +7,7 @@ before_install:
     - pip install matplotlib
 script:
     - pytest --cov=./
+env:
+    - CODECOV_TOKEN=11a49e24-fc3d-4a95-9ef7-df2258d5babf
 after_success:
     - codecov
