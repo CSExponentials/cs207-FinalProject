@@ -5,7 +5,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
 import ElemFunc as EF
 from ADiff import ADiff
 
-#import pytest
+import pytest
 import math as math
 
 # Test a bunch of unit scenarios of one input for scalar functions
