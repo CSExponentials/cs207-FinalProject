@@ -1,4 +1,5 @@
-from AutoDiff import AutoDiff
+from .AutoDiff import AutoDiff
+
 import math as math
 
 def sin(x):

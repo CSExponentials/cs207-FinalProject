@@ -1,4 +1,4 @@
-from AutoDiff import AutoDiff
+from .AutoDiff import AutoDiff
 
 class ADiff():
     def __init__(self, func):
