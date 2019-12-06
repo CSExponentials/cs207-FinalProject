@@ -2,11 +2,18 @@
 # import sys
 # sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
 
-from ..AD import ElemFunc as EF
-from ..AD import ADiff
-# sys.path.append(os.path.join(os.path.dirname(__file__),'../MCMC/'))
-from ..MCMC.HMC import HMCSampler
-from ..MCMC.MALA import MALASampler
+import os
+import sys
+
+TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.abspath(os.path.join(TEST_DIR, os.pardir))
+sys.path.insert(0, PROJECT_DIR)
+
+from AD import ElemFunc as EF
+from AD import ADiff
+sys.path.append(os.path.join(os.path.dirname(__file__),'../MCMC/'))
+from HMC import HMCSampler
+from MALA import MALASampler
 
 import pytest
 import math as math
