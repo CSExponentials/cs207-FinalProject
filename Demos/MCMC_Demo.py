@@ -1,8 +1,8 @@
-import os
-import sys
-sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
-import ElemFunc as EF
+import AD
+import AD.ElemFunc as EF
 
+import sys
+import os
 sys.path.append(os.path.join(os.path.dirname(__file__),'../MCMC'))
 from HMC import HMCSampler
 from MALA import MALASampler
