@@ -1,15 +1,14 @@
-#import AD
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
+
+import ElemFunc as EF
+from ADiff import ADiff
+sys.path.append(os.path.join(os.path.dirname(__file__),'../MCMC/'))
+from HMC import HMCSampler
+from MALA import MALASampler
+
 import pytest
-
-from AD import ElemFunc as EF
-from AD.ADiff import ADiff
-
-# import os
-# import sys
-# sys.path.append(os.path.join(os.path.dirname(__file__),'../MCMC/'))
-from MCMC.HMC import HMCSampler
-from MCMC.MALA import MALASampler
-
 import math as math
 import numpy as np
 
