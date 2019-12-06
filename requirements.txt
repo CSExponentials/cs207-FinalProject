@@ -3,4 +3,3 @@ pytest-cov==2.5.1
 pytest-dependency==0.2
 numpy
 matplotlib
--i https://test.pypi.org/simple/ Exponentials-Automatic-Differentiation
