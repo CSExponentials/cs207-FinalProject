@@ -1,4 +1,4 @@
-import AD as AD
+import AD
 
 import AD.ElemFunc as EF
 from AD.ADiff import ADiff
