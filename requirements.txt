@@ -3,4 +3,4 @@ pytest-cov==2.5.1
 pytest-dependency==0.2
 numpy
 matplotlib
-pip install -i https://test.pypi.org/simple/ Exponentials-Automatic-Differentiation==0.0.1
+-i https://test.pypi.org/simple/ Exponentials-Automatic-Differentiation
