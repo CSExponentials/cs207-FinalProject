@@ -3,8 +3,8 @@
 # print(os.getcwd())
 # sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
 
-from .AD import ElemFunc as EF
-from .AD import ADiff
+from AD import ElemFunc as EF
+from AD import ADiff
 
 import pytest
 import math as math
