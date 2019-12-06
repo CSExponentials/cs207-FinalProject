@@ -5,8 +5,8 @@
 
 # os.chdir('AD/')
 # print(os.getcwd())
-from ..AD.ElemFunc import *
-from ..AD.ADiff import ADiff
+from .AD.ElemFunc import *
+from .AD.ADiff import ADiff
 
 import pytest
 import math as math
