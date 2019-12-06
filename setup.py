@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="Exponentials-AD",
+    name="AutoDiff-Exponentials",
     version="0.0.1",
     author="Galit",
     author_email="glukin@mit.edu",

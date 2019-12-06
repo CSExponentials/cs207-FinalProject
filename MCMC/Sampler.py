@@ -1,9 +1,12 @@
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
 
-import ElemFunc as EF
-import ADiff as AD
+TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.abspath(os.path.join(TEST_DIR, os.pardir))
+sys.path.insert(0, PROJECT_DIR)
+
+from AD import ElemFunc as EF
+from AD import ADiff
 import numpy as np
 
 import matplotlib.pyplot as plt
@@ -25,7 +28,7 @@ class Sampler():
             return EF.log(target(*arg))
 
         # Instantiate the AD object
-        self.AD_logtarget=AD.ADiff(logtarget)
+        self.AD_logtarget=ADiff(logtarget)
 
         # This is used to percentage of accepted proposals for each run of the sampling algorithm
         # For MALA, the ideal rate is around 0.9 or higher, which the user should try to achieve by adjust tau
