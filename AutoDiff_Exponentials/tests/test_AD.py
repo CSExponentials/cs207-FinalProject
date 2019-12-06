@@ -1,10 +1,10 @@
-import os
-import sys
-print(os.getcwd())
-sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
+# import os
+# import sys
+# print(os.getcwd())
+# sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
 
-from ElemFunc import *
-from ADiff import ADiff
+import ..AD.ElemFunc as EF
+from ..AD.ADiff import ADiff
 
 import pytest
 import math as math
