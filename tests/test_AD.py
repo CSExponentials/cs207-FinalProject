@@ -1,7 +1,9 @@
-import AD
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
 
-import AD.ElemFunc as EF
-from AD.ADiff import ADiff
+import ElemFunc as EF
+from ADiff import ADiff
 
 import pytest
 import math as math
