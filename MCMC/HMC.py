@@ -1,8 +1,3 @@
-import os
-import sys
-sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
-
-import ADiff as AD
 import numpy as np
 
 from Sampler import Sampler
