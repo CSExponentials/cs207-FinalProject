@@ -1,4 +1,4 @@
-from AutoDiff import AutoDiff
+from AD.AutoDiff import AutoDiff
 
 class ADiff():
     def __init__(self, func):
@@ -9,7 +9,7 @@ class ADiff():
     # function
     def pJac(self,c,p):
         """ Returns J*p where J is Jacobian at c
-        
+
         INPUTS
         =======
         p: direction to which J is applied to: J*p
@@ -86,7 +86,7 @@ class ADiff():
     # Output entire Jacobian
     def Jac(self,c):
         """ Returns J where J is Jacobian at c
-        
+
         INPUTS
         =======
         c: point at which J is evaluated at
@@ -103,7 +103,7 @@ class ADiff():
             clen=1
 
         varNum=clen
-        
+
 
         # Preallocate to store entire Jacobian matrix
         JacList=[None]*varNum

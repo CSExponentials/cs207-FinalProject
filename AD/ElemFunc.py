@@ -1,4 +1,4 @@
-from AutoDiff import AutoDiff
+from AD.AutoDiff import AutoDiff
 import math as math
 
 def sin(x):
@@ -98,7 +98,7 @@ def exp_base(y,x):
         return AutoDiff(math.pow(y,x.val), math.pow(y,x.val)*x.der)
     except AttributeError:
         return AutoDiff(math.pow(y,x),0)
-    
+
 def logistic(x):
     """Returns the value and derivative of the logistic sigmoid of x as an AutoDiff instance.
 
@@ -122,7 +122,7 @@ def logistic(x):
         return AutoDiff((1 / (1 + math.exp(-x.val))), (1 / (1 + math.exp(-x.val)))*(1-(1 / (1 + math.exp(-x.val))))*x.der)
     except AttributeError:
         return AutoDiff(1 / (1 + math.exp(-x)),0)
-    
+
 def cosh(x):
     """Returns the value and derivative of the hyperbolic cosine of x as an AutoDiff instance.
 
@@ -146,7 +146,7 @@ def cosh(x):
         return AutoDiff(((math.exp(x.val)+math.exp(-x.val))/2), ((math.exp(x.val)-math.exp(-x.val))/2)*x.der)
     except AttributeError:
         return AutoDiff(((math.exp(x)+math.exp(-x))/2),0)
-    
+
 def sinh(x):
     """Returns the value and derivative of the hyperbolic sine of x as an AutoDiff instance.
 
@@ -165,13 +165,13 @@ def sinh(x):
     >>> a = AutoDiff(2,1)
     >>> sinh(a)
     Value: 3.6268604078470186, Derivative: 3.7621956910836314
-    
+
     """
     try:
         return AutoDiff(((math.exp(x.val)-math.exp(-x.val))/2), ((math.exp(x.val)+math.exp(-x.val))/2)*x.der)
     except AttributeError:
-        return AutoDiff(((math.exp(x)-math.exp(-x))/2),0)    
- 
+        return AutoDiff(((math.exp(x)-math.exp(-x))/2),0)
+
 def tanh(x):
     """Returns the value and derivative of the hyperbolic tangent of x as an AutoDiff instance.
 
@@ -191,10 +191,10 @@ def tanh(x):
     >>> tanh(a)
     Value 0.9640275800758169, Derivative: 1
     """
-    try: 
+    try:
         return AutoDiff(((math.exp(x.val)-math.exp(-x.val))/2)/((math.exp(x.val)+math.exp(-x.val))/2), ((1/((math.exp(x.val)+math.exp(-x.val))/2)*((math.exp(x.val)+math.exp(-x.val))/2))*x.der))
     except AttributeError:
-        return AutoDiff(((math.exp(x)-math.exp(-x))/2)/((math.exp(x)+math.exp(-x))/2),0) 
+        return AutoDiff(((math.exp(x)-math.exp(-x))/2)/((math.exp(x)+math.exp(-x))/2),0)
 
 def log(x, b = math.e):
     """Returns the value and derivative of log base e of x as an AutoDiff instance.
@@ -235,7 +235,7 @@ def tan(x):
     EXAMPLES
     =========
     >>> tan(2)
-    Value: -2.185039863261519, Derivative: 0 
+    Value: -2.185039863261519, Derivative: 0
     >>> a = AutoDiff(2,1)
     >>> tan(a)
     Value: -2.185039863261519, Derivative: 5.774399204041918
