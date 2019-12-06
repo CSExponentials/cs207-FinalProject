@@ -1,9 +1,9 @@
-# import os
-# import sys
-# sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__),'../AD'))
 
-import ..AD.ElemFunc as EF
-import ..AD.ADiff
+import AD.ElemFunc as EF
+import AD.ADiff
 import numpy as np
 
 import matplotlib.pyplot as plt
