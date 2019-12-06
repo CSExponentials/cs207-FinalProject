@@ -1,12 +1,10 @@
-# import os
-# import sys
-# print(os.getcwd())
-# sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
+import os
+import sys
+print(os.getcwd())
+sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
 
-# os.chdir('AD/')
-# print(os.getcwd())
-from .AD.ElemFunc import *
-from .AD.ADiff import ADiff
+from ElemFunc import *
+from ADiff import ADiff
 
 import pytest
 import math as math
@@ -22,7 +20,7 @@ def test_log():
     """
     c=14
     def myfunc(x):
-        f1=log(x)
+        f1=EF.log(x)
         return f1
 
     f_obj=ADiff(myfunc)
