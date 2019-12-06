@@ -2,11 +2,11 @@
 # import sys
 # sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
 
-import ..AD.ElemFunc as EF
-from ..AD.ADiff import ADiff
+from ..AD import ElemFunc as EF
+from ..AD import ADiff
 # sys.path.append(os.path.join(os.path.dirname(__file__),'../MCMC/'))
-from ..HMC import HMCSampler
-from ..MALA import MALASampler
+from ..MCMC.HMC import HMCSampler
+from ..MCMC.MALA import MALASampler
 
 import pytest
 import math as math
