@@ -1,12 +1,12 @@
-import os
-import sys
-sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
-
-import ElemFunc as EF
-from ADiff import ADiff
-
 import pytest
 import math as math
+
+# import os
+# import sys
+# sys.path.append(os.path.join(os.path.dirname(__file__),'../AD/'))
+
+from AD import ElemFunc as EF
+from AD.ADiff import ADiff
 
 # Test a bunch of unit scenarios of one input for scalar functions
 
